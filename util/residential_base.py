@@ -7,8 +7,8 @@ class Residential_base():
         rooms = 10
         beds = 8
         for room in range(rooms):
-            if len(soldiers) > 0:
-                for bed in range(beds):
+            for bed in range(beds):
+                if len(soldiers) > 0:
                     base1.append(soldiers.pop(0))
         return base1
     
