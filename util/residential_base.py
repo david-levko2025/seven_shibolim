@@ -1,0 +1,26 @@
+from typing import Optional
+from sqlmodel import Field,SQLModel
+
+class Residential_base():
+    def base_sorting(soldiers: list[list[str]]):
+        base1= []
+        rooms = 10
+        beds = 8
+        for room in range(rooms):
+            for bed in range(beds):
+                if len(soldiers) > 0:
+                    base1.append(soldiers.pop(0))
+        return base1
+    
+    def bases(soldiers: list[list[str]]):
+        base_one = Residential_base.base_sorting(soldiers)
+        base_two = Residential_base.base_sorting(soldiers)
+        waiting = Residential_base.base_sorting(soldiers)
+        return {
+            "have two residential:"
+            "residential 1" : base_one,
+            "residential 2" : base_two,
+            "waiting" : waiting
+        }
+
+
