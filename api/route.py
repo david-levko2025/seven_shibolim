@@ -1,8 +1,9 @@
 from fastapi import UploadFile,FastAPI
 import io
 import csv
-
-
+import uvicorn
+from models.residential_base import Residential_base
+from functions import bublle_sort
 app = FastAPI()
 
 @app.post("/assignWithCsv")
@@ -14,20 +15,18 @@ def upload_csv(file: UploadFile):
     reader = csv.reader(io.StringIO(content))
     header = next(reader)
     rows = list(reader)
-
+    bublle_sort.sorted_by_distance(rows)
+    distribution_by_residence = Residential_base.bases(rows)
+    mm = len(distribution_by_residence)
     for line in rows:
         print(line)
 
-    return {
-        "filename": file.filename,
-        "content_type": file.content_type,
-        "total_rows": len(rows),
-        "columns": header,
-        "data": rows,
-        "message": f"Successfully processed CSV with {len(rows)} rows"
-    }
-def sorting_distance():
-    pass
+    return ""
+
+
+
+
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

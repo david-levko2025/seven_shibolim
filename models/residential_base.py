@@ -1,7 +1,7 @@
 from typing import Optional
 from sqlmodel import Field,SQLModel
 
-class Residential_base(SQLModel,table= True):
+class Residential_base():
     def base_sorting(soldiers: list[list[str]]):
         base1= []
         rooms = 10
@@ -16,6 +16,6 @@ class Residential_base(SQLModel,table= True):
         base_one = Residential_base.base_sorting(soldiers)
         base_two = Residential_base.base_sorting(soldiers)
         waiting = Residential_base.base_sorting(soldiers)
-        return waiting
+        return [base_one,base_two,waiting]
 
 

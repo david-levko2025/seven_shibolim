@@ -8,3 +8,4 @@ def read_distance(distance:int):
     with session(engine) as session:
         statement = select(Soldier).sort(Soldier.distance)
         soldiers = session.exec(statement).all()
+
