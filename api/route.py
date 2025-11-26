@@ -1,13 +1,14 @@
-from fastapi import UploadFile,FastAPI
+from fastapi import UploadFile
 import io
 import csv
-import uvicorn
 from models.residential_base import Residential_base
-from functions import bublle_sort
-app = FastAPI()
+from functions.bublle_sort import Sort
+from api.gen import app
+
+
 
 @app.post("/assignWithCsv")
-def upload_csv(file: UploadFile):
+def upload_csv_plus_sort(file: UploadFile):
     if file.content_type != "text/csv":
          return {"error": "File must be a CSV"}
     
@@ -15,20 +16,20 @@ def upload_csv(file: UploadFile):
     reader = csv.reader(io.StringIO(content))
     header = next(reader)
     rows = list(reader)
-    bublle_sort.sorted_by_distance(rows)
+    Sort.sort_on_distance(rows)
     distribution_by_residence = Residential_base.bases(rows)
-    mm = len(distribution_by_residence)
-    for line in rows:
-        print(line)
+    deployed_soldiers = len(distribution_by_residence['base_one']) + len(distribution_by_residence['base_two']
+                                                                         
 
-    return ""
-
-
-
-
+    return {
+        "the number of soldiers deployed ":deployed_soldiers,
+        "the waiting": distribution_by_residence["waiting"]
+    }
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8000)
+
+
+
+
 
 
