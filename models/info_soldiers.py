@@ -8,5 +8,5 @@ class Soldier(SQLModel, table = True):
     l_name : str 
     gender : str
     city : str
-    distance :int
+    his_distance :int
     status : bool 

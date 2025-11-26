@@ -16,6 +16,11 @@ class Residential_base():
         base_one = Residential_base.base_sorting(soldiers)
         base_two = Residential_base.base_sorting(soldiers)
         waiting = Residential_base.base_sorting(soldiers)
-        return [base_one,base_two,waiting]
+        return {
+            "have two residential:"
+            "residential 1" : base_one,
+            "residential 2" : base_two,
+            "waiting" : waiting
+        }
 
 

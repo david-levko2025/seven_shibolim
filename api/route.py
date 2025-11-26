@@ -1,8 +1,8 @@
 from fastapi import UploadFile
 import io
 import csv
-from models.residential_base import Residential_base
-from functions.bublle_sort import Sort
+from util.residential_base import Residential_base
+from util.bublle_sort import Sort
 from api.gen import app
 
 
@@ -18,8 +18,9 @@ def upload_csv_plus_sort(file: UploadFile):
     rows = list(reader)
     Sort.sort_on_distance(rows)
     distribution_by_residence = Residential_base.bases(rows)
-    deployed_soldiers = len(distribution_by_residence['base_one']) + len(distribution_by_residence['base_two']
-                                                                         
+    deployed_soldiers = len(distribution_by_residence['base_one']) + len(distribution_by_residence['base_two'])
+    # for line in rows:
+    #     print(line)
 
     return {
         "the number of soldiers deployed ":deployed_soldiers,
