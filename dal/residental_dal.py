@@ -3,7 +3,7 @@ from dal.engine import engine
 from sqlmodel import Session,select
 
 
-def besd_left(num_residence):
+def beds_left(num_residence):
     reaction = {}
     rooms_in_residence = [0,0,0,0,0,0,0,0,0,0]
     with Session(engine) as session:

@@ -38,6 +38,8 @@ def upload_csv(file: UploadFile):
     Sort.sort_on_distance(rows)
     distribution_by_residence = Residential_base.bases(rows)
     deployed_soldiers = len(distribution_by_residence['base_one']) + len(distribution_by_residence['base_two'])
+    waiting_list = len(distribution_by_residence["waiting list"])
+
 
     return {
         "the number of soldiers deployed ":deployed_soldiers,
