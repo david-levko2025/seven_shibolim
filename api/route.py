@@ -23,9 +23,11 @@ def upload_csv(file: UploadFile):
         "content_type": file.content_type,
         "total_rows": len(rows),
         "columns": header,
-        "data": rows[0:5],
+        "data": rows,
         "message": f"Successfully processed CSV with {len(rows)} rows"
     }
+def sorting_distance():
+    pass
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

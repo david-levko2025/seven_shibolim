@@ -9,4 +9,4 @@ class Soldier(SQLModel, table = True):
     gender : str
     city : str
     distance :int
-    status : bool #for now
+    status : bool 
