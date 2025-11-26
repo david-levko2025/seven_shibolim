@@ -5,4 +5,4 @@ from sqlmodel import Field,SQLModel
 class Residence(SQLModel,table= True):
     id_number :int   
     residence :int
-    room_numner :int
+    room_number :int
